@@ -244,10 +244,10 @@ def signal_cards(records, stronger):
 
 
 def main():
-    st.set_page_config(page_title='AlignAgent — Tool 2', layout='wide')
+    st.set_page_config(page_title='CommsAlign — Tool 2', layout='wide')
     st.markdown(DASHBOARD_CSS, unsafe_allow_html=True)
     st.markdown('<span class="aa-badge">Prototype</span>', unsafe_allow_html=True)
-    st.title('AlignAgent')
+    st.title('CommsAlign')
     with st.container(key='page-title'):
         st.header('Organizational Communication Diagnostic')
     st.write('Translate aggregated engagement survey results into structured communication signals and manager discussion prompts.')
@@ -430,10 +430,10 @@ def main():
 
     st.download_button(
         'Download Diagnostic Summary', data=diagnostic_summary_text(report),
-        file_name='alignagent-diagnostic-summary.txt', mime='text/plain; charset=utf-8', type='primary',
+        file_name='commsalign-diagnostic-summary.txt', mime='text/plain; charset=utf-8', type='primary',
     )
     render_workflow(report, matrix)
-    st.markdown('<footer class="aa-footer">AlignAgent prototype. Inspired by contemporary employee-engagement reporting practices. Not affiliated with or endorsed by Gallup.</footer>', unsafe_allow_html=True)
+    st.markdown('<footer class="aa-footer">CommsAlign prototype. Inspired by contemporary employee-engagement reporting practices. Not affiliated with or endorsed by Gallup.</footer>', unsafe_allow_html=True)
 
 
 if __name__ == '__main__':

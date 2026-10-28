@@ -23,7 +23,7 @@ def discussion_summary(report, item, validation, notes):
     if validation is not None and validation.source_item != item:
         raise ValueError('Evidence record does not match the selected signal.')
     lines = [
-        'AlignAgent — Manager Discussion Guide and Follow-up',
+        'CommsAlign — Manager Discussion Guide and Follow-up',
         'Synthetic demonstration data — not real Gallup results.',
         f'Team: {report.team_id}', f'Period: {report.period or "Not supplied"}',
         f'Minimum reporting threshold: {report.minimum_responses} responses per supplied item.',
@@ -121,5 +121,5 @@ def render_workflow(report, matrix):
     st.caption('The download includes the guide and last saved notes for this signal only. Unsaved edits are excluded.')
     st.download_button('Download Discussion Summary',
                        data=discussion_summary(report, item, validation, drafts.get(key, {})),
-                       file_name='alignagent-discussion-summary.txt', mime='text/plain; charset=utf-8',
+                       file_name='commsalign-discussion-summary.txt', mime='text/plain; charset=utf-8',
                        key='discussion_download:' + key)

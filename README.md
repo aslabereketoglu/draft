@@ -1,3 +1,37 @@
+# CommsAlign
+
+A shared workplace communication prototype with **Tool 1 — Message Coach** and
+**Tool 2 — Team Diagnostic**. Survey interpretations and message ratings are
+provisional, not validated diagnoses. Tool 2 currently uses synthetic inputs.
+
+## Run the shared dashboard
+
+```sh
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/streamlit run streamlit_app.py
+```
+
+Use Python 3.11 for a new hosted environment. Tool 2 needs no API credentials.
+Tool 1 requires the GW Azure settings in a local `.env` file (see `.env.example`)
+or private deployment secrets. Never commit credentials. No real model request
+is made until a user submits a draft with consent. Rewriting and automated
+cross-tool handoff remain unimplemented.
+
+## Review and collaboration
+
+See [sharing and deployment](docs/SHARING.md),
+[integration notes](docs/TOOL1_TOOL2_INTEGRATION.md),
+[Tool 2 demo guide](docs/TOOL2_DEMO_GUIDE.md), and
+[evidence limitations](data/organizational/evidence_review_followup.md).
+
+Run tests with `.venv/bin/python -m pytest -q`. Work on a separate branch and
+submit a pull request; do not upload credentials, identifiable discussion notes,
+or private survey data. The README below describes the earlier standalone local
+personal-use engine, which is separate from the imported Tool 1 judge.
+
+---
+
 # AlignAgent personal-use prototype
 
 A local, rule-based minimum viable prototype for workplace communication review.

@@ -36,7 +36,7 @@ def test_dashboard_renders_and_team_selector_updates_all_outputs():
     reports = analyze_csv(SAMPLE_PATH)
     app = AppTest.from_file(str(DASHBOARD)).run(timeout=30)
     assert not app.exception
-    assert app.title[0].value == 'AlignAgent'
+    assert app.title[0].value == 'CommsAlign'
     assert 'Organizational Communication Diagnostic' in [h.value for h in app.header]
     assert any('Synthetic demonstration data — not real Gallup results.' == info.value for info in app.info)
     assert app.warning[0].value == 'Survey results are signals and hypotheses only. They do not establish causes.'

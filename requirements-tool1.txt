@@ -1,0 +1,2 @@
+# Compatibility setup command; shared runtime includes both tools.
+-r requirements.txt
