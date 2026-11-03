@@ -34,7 +34,7 @@ def overview():
         st.write('Get structured feedback on a task instruction or performance feedback draft before you share it.')
         st.markdown('- Review your draft against a message-specific rubric.\n- Inspect the evidence behind each rating.\n- Download the review for your own revision.')
         st.caption('Live evaluation requires your GW Azure connection. Automated rewriting is not available yet.')
-        if st.button('Open Message Coach',type='primary',use_container_width=True):
+        if st.button('Open',key='open-message-coach',type='primary',use_container_width=True):
             st.switch_page(st.Page(message_coach,title='Tool 1 — Message Coach',url_path='message-coach'))
     with st.container(key='tool-card-two'):
         st.markdown('<div class="ca-tag">Tool 2 · Explore team signals</div>',unsafe_allow_html=True)
@@ -42,7 +42,7 @@ def overview():
         st.write('Explore aggregate survey patterns and turn a selected signal into a structured team discussion.')
         st.markdown('- See relative strengths and areas to explore.\n- Review evidence and privacy limitations.\n- Capture learning and export a follow-up summary.')
         st.caption('Currently uses synthetic demonstration data. Small-group results are suppressed by the reporting rule.')
-        if st.button('Open Team Diagnostic',use_container_width=True):
+        if st.button('Open',key='open-team-diagnostic',type='primary',use_container_width=True):
             st.switch_page(st.Page(team_diagnostic,title='Tool 2 — Team Diagnostic',url_path='team-diagnostic'))
     st.markdown('<p class="ca-foot">A starting point for discussion, not a diagnosis. Survey interpretations and message ratings remain provisional. Nothing is automatically sent between tools or to employees.</p>',unsafe_allow_html=True)
 
