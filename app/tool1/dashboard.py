@@ -42,6 +42,7 @@ def score_chart(result):
 def clear_message():
     st.session_state['tool1_result']=None
     st.session_state['tool1_draft']=''
+    st.session_state.pop('tool1_revision',None)
 
 
 def main():
@@ -60,6 +61,7 @@ def main():
         submit=st.form_submit_button('Evaluate draft')
     if submit:
         st.session_state['tool1_result']=None
+        st.session_state.pop('tool1_revision',None)
         if not draft.strip():
             st.error('Enter a draft message to evaluate.')
         elif not consent:
@@ -110,5 +112,14 @@ def main():
             st.write(rating['note'])
         for warning in result['warnings']:
             st.warning(warning)
+        if not result['abstain']:
+            st.subheader('Improve your draft')
+            st.write('Fill in the brackets where details are missing in your message. You can also edit the wording using the feedback above.')
+            st.caption('Brackets are model-suggested prompts; review their placement and remove any that do not apply. Editing here does not change the scores above. To evaluate your revision, copy it into Draft message and submit again with consent.')
+            st.session_state.setdefault('tool1_revision',result.get('revision_template') or saved['draft'])
+            if st.session_state['tool1_revision']==saved['draft']:
+                st.caption('No inline blanks were supplied for this review. You can revise your draft directly.')
+            revision=st.text_area('Your revision — fill in the brackets',height=350,key='tool1_revision')
+            st.download_button('Download your revision',revision,file_name='commsalign-revised-draft.txt',mime='text/plain')
         st.download_button('Download Message Review',json.dumps(saved,indent=2),file_name='commsalign-message-review.json',mime='application/json')
         st.button('Clear message and result',on_click=clear_message)

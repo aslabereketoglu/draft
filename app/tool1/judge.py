@@ -25,6 +25,7 @@ Rules:
 - Use exactly these dimension keys in "scores": {keys}.
 - Every dimension has "status", "evidence" (a list of exact quotes), "note", and "score" (an integer 1 to 5, or null when the status is not "scored").
 - "confidence.level" is one of "high", "medium", "low".
+- Also return "revision_placeholders": a list of objects with "after" and "prompt" strings. For missing details identified by the rubric, "after" must be an exact, unique substring of the original draft ending where an inline blank would help. "prompt" must be a short plain-language question, such as "by when?" or "who?", without brackets. Use at most 10. Do not ask for information already supplied, invent details, or append a checklist. Use an empty list when abstaining or no blanks are useful. Scores and evidence must evaluate the original draft only.
 
 RUBRIC
 ======
@@ -46,6 +47,29 @@ class JudgeResult:
     confidence_note: str
     warnings: list[str] = field(default_factory=list)
     raw: dict = field(default_factory=dict)
+    revision_template: str | None = None
+
+
+def inline_revision(draft, placeholders):
+    """Insert validated prompts; never replace or remove the author's words."""
+    if not isinstance(placeholders,list):
+        return draft
+    insertions={}
+    for item in placeholders[:10]:
+        if not isinstance(item,dict):
+            continue
+        anchor,prompt=item.get('after'),item.get('prompt')
+        if not isinstance(anchor,str) or not anchor or draft.count(anchor)!=1:
+            continue
+        if (not isinstance(prompt,str) or not prompt.endswith('?')
+                or len(prompt)>100 or any(c in prompt for c in '[]\n\r')):
+            continue
+        position=draft.index(anchor)+len(anchor)
+        insertions[position]=' ['+prompt+']'
+    revision=draft
+    for position,prompt in sorted(insertions.items(),reverse=True):
+        revision=revision[:position]+prompt+revision[position:]
+    return revision
 
 
 def _normalize(text: str) -> str:
@@ -131,6 +155,7 @@ def check_and_label(rubric: Rubric, draft: str, raw: dict) -> JudgeResult:
         confidence_note=confidence.get("note", ""),
         warnings=warnings,
         raw=raw,
+        revision_template=None if abstained else inline_revision(draft,raw.get('revision_placeholders',[])),
     )
 
 
