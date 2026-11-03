@@ -29,20 +29,27 @@ def main():
         elif not consent:
             st.error('Confirm the model submission before evaluating.')
         else:
+            progress=st.progress(10,text='10% — Checking connection settings')
+            st.caption('Progress reflects review stages. It stays at 25% while the model responds.')
             try:
                 from app.tool1.config import load_settings
                 from app.tool1.judge import judge
                 try:
                     load_settings()
                 except RuntimeError:
+                    progress.empty()
                     st.error('GW Azure settings are missing. Configure the required settings in your local .env file; never paste API keys into chat or commit them to GitHub.')
                 else:
+                    progress.progress(25,text='25% — Reviewing your draft against the rubric…')
                     with st.spinner('Reviewing the draft…'):
                         result=judge(draft,kind)
                     st.session_state['tool1_result']={'draft':draft,'result':asdict(result)}
+                    progress.progress(100,text='100% — Review complete. Your results are below.')
             except ImportError:
+                progress.empty()
                 st.error('Install requirements-tool1.txt to enable the model connection.')
             except Exception:
+                progress.empty()
                 st.error('Evaluation could not be completed. Check the GW connection settings and model access, then retry. No result has been substituted.')
     with st.expander('Connection setup and rubric'):
         st.write('Install requirements-tool1.txt, then copy .env.example to .env and enter your GW-provided settings locally. Never commit .env.')
