@@ -1,8 +1,42 @@
 """Session-only interface for the teammates' Tool 1 judge."""
 from dataclasses import asdict
 import json
+import re
 import streamlit as st
+import altair as alt
 from app.tool1.rubrics import RUBRICS
+
+
+def dimension_label(name):
+    return re.sub(r'^[DF]\d+_', '', name).replace('_',' ').capitalize()
+
+
+def score_chart(result):
+    if result['abstain']:
+        return
+    rows=[]
+    unscored=[]
+    for name,rating in result['dimensions'].items():
+        label=dimension_label(name)
+        if rating['status']=='scored' and rating['score'] is not None:
+            rows.append({'Dimension':label,'Score':rating['score'],'Baseline':1})
+        else:
+            unscored.append(label)
+    if rows:
+        st.subheader('Rubric scores')
+        chart=alt.Chart(alt.Data(values=rows)).encode(
+            y=alt.Y('Dimension:N',sort=[row['Dimension'] for row in rows],title=None),
+            x=alt.X('Score:Q',scale=alt.Scale(domain=[1,5],zero=False),
+                    axis=alt.Axis(values=[1,2,3,4,5]),title='Score (1–5)'),
+            tooltip=['Dimension:N','Score:Q'],
+        )
+        bars=chart.mark_bar(color='#2F75B5',size=22).encode(x2='Baseline:Q')
+        points=chart.mark_point(filled=True,color='#2F75B5',size=65)
+        labels=chart.mark_text(align='left',dx=9,color='#20334A').encode(text='Score:Q')
+        st.altair_chart((bars+points+labels).properties(height=max(120,len(rows)*48)),use_container_width=True)
+        st.caption('Bars start at 1, the lowest rubric score. Higher scores indicate closer alignment with the rubric.')
+    if unscored:
+        st.caption('Not scored: '+', '.join(unscored)+'. See the explanations below.')
 
 
 def clear_message():
@@ -17,6 +51,8 @@ def main():
     st.info('Scores are rubric-based model judgments, not validated measures of communication effectiveness. Review the evidence and output yourself.')
     st.caption('Evaluation sends your draft to the configured GW Azure service only when you submit it with consent. No message is sent to employees. The rewriter/RAG component is not implemented. Avoid identifying or sensitive content.')
     st.session_state.setdefault('tool1_result',None)
+    if (st.session_state['tool1_result'] or {}).get('sample'):
+        st.session_state['tool1_result']=None
     with st.form('tool1_review'):
         kind=st.selectbox('Message type',list(RUBRICS),format_func=lambda value:value.replace('_',' ').title())
         draft=st.text_area('Draft message',height=200,key='tool1_draft')
@@ -65,8 +101,9 @@ def main():
         else:
             st.write('Rubric label: '+str(result['label']).replace('_',' '))
         st.caption('Model-reported confidence: '+result['confidence_level']+' — '+result['confidence_note'])
+        score_chart(result)
         for name,rating in result['dimensions'].items():
-            st.write('**'+name.replace('_',' ')+'**')
+            st.write('**'+dimension_label(name)+'**')
             st.write(f'Status: {rating["status"]}; score: {rating["score"] if rating["score"] is not None else "Not scored"}')
             for quote in rating['evidence']:
                 st.text('Evidence: '+quote)
