@@ -14,6 +14,9 @@ class LLM:
             api_key=self.settings.api_key,
             azure_endpoint=self.settings.endpoint,
             api_version=self.settings.api_version,
+            # GW's deployment has a token rate limit; retry 429/5xx with back-off.
+            max_retries=8,
+            timeout=180,
         )
 
     def complete(self, instructions: str, text: str, json_output: bool = False) -> str:

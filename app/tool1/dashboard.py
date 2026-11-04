@@ -1,5 +1,6 @@
 """Session-only interface for the teammates' Tool 1 judge."""
 from dataclasses import asdict
+import html
 import json
 import re
 import streamlit as st
@@ -43,6 +44,7 @@ def clear_message():
     st.session_state['tool1_result']=None
     st.session_state['tool1_draft']=''
     st.session_state.pop('tool1_revision',None)
+    st.session_state.pop('tool1_rescore',None)
 
 
 def main():
@@ -50,7 +52,7 @@ def main():
     st.title('Tool 1 — Message Coach')
     st.write('Review a task instruction or performance feedback draft using the team’s rubric.')
     st.info('Scores are rubric-based model judgments, not validated measures of communication effectiveness. Review the evidence and output yourself.')
-    st.caption('Evaluation sends your draft to the configured GW Azure service only when you submit it with consent. No message is sent to employees. The rewriter/RAG component is not implemented. Avoid identifying or sensitive content.')
+    st.caption('Evaluation sends your draft to the configured GW Azure service only when you submit it with consent. No message is sent to employees. The rewrite never invents facts: anything only you know is left as a [gap?] to fill in. Avoid identifying or sensitive content.')
     st.session_state.setdefault('tool1_result',None)
     if (st.session_state['tool1_result'] or {}).get('sample'):
         st.session_state['tool1_result']=None
@@ -62,6 +64,7 @@ def main():
     if submit:
         st.session_state['tool1_result']=None
         st.session_state.pop('tool1_revision',None)
+        st.session_state.pop('tool1_rescore',None)
         if not draft.strip():
             st.error('Enter a draft message to evaluate.')
         elif not consent:
@@ -71,17 +74,18 @@ def main():
             st.caption('Progress reflects review stages. It stays at 25% while the model responds.')
             try:
                 from app.tool1.config import load_settings
-                from app.tool1.judge import judge
+                from app.tool1.pipeline import run
                 try:
                     load_settings()
                 except RuntimeError:
                     progress.empty()
                     st.error('GW Azure settings are missing. Configure the required settings in your local .env file; never paste API keys into chat or commit them to GitHub.')
                 else:
-                    progress.progress(25,text='25% — Reviewing your draft against the rubric…')
-                    with st.spinner('Reviewing the draft…'):
-                        result=judge(draft,kind)
-                    st.session_state['tool1_result']={'draft':draft,'result':asdict(result)}
+                    progress.progress(25,text='25% — Scoring, rewriting, and scoring the rewrite…')
+                    with st.spinner('Reviewing and rewriting the draft…'):
+                        res=run(draft,kind)
+                    st.session_state['tool1_result']={'draft':draft,'kind':kind,'result':asdict(res.before),
+                        'rewrite':asdict(res.rewrite) if res.rewrite else None,'after':asdict(res.after) if res.after else None}
                     progress.progress(100,text='100% — Review complete. Your results are below.')
             except ImportError:
                 progress.empty()
@@ -112,14 +116,47 @@ def main():
             st.write(rating['note'])
         for warning in result['warnings']:
             st.warning(warning)
-        if not result['abstain']:
-            st.subheader('Improve your draft')
-            st.write('Fill in the brackets where details are missing in your message. You can also edit the wording using the feedback above.')
-            st.caption('Brackets are model-suggested prompts; review their placement and remove any that do not apply. Editing here does not change the scores above. To evaluate your revision, copy it into Draft message and submit again with consent.')
-            st.session_state.setdefault('tool1_revision',result.get('revision_template') or saved['draft'])
-            if st.session_state['tool1_revision']==saved['draft']:
-                st.caption('No inline blanks were supplied for this review. You can revise your draft directly.')
-            revision=st.text_area('Your revision — fill in the brackets',height=350,key='tool1_revision')
+        rw=saved.get('rewrite')
+        if rw:
+            st.subheader('Suggested rewrite')
+            st.caption('Highlighted [gaps?] are details only you know. The tool never guesses them.')
+            st.markdown('<div style="border:1px solid #DEE6EF;border-radius:10px;padding:12px;background:white;white-space:pre-wrap">'
+                        +re.sub(r'(\[[^\[\]]*\?\])',r'<mark>\1</mark>',html.escape(rw['rewrite']))+'</div>',unsafe_allow_html=True)
+            for w in rw['warnings']:
+                st.warning(w)
+            after=saved.get('after')
+            if after and rw['changes']:
+                st.write('Rewrite label: '+str(after['label']).replace('_',' '))
+                score_chart(after)
+            if rw['changes']:
+                st.subheader('Why these changes')
+                cards={c['id']:c for c in rw['cards']}
+                for ch in rw['changes']:
+                    with st.expander(dimension_label(str(ch.get('dimension','')))+': '+str(ch.get('what',''))):
+                        st.write(ch.get('why',''))
+                        for cid in ch.get('card_ids') or []:
+                            c=cards.get(cid)
+                            if c:
+                                st.markdown(f"**Evidence ({c['setting']}).** {c['finding']}  \n_{c['source']}, {c['locator']}. Limits: {c['limits']}_")
+                        if not ch.get('card_ids'):
+                            st.caption('No evidence card applies to this change; it follows the rubric only.')
+            st.subheader('Fill in the gaps and re-score')
+            st.session_state.setdefault('tool1_revision',rw['rewrite'])
+            revision=st.text_area('Your version',height=220,key='tool1_revision')
+            if st.button('Re-score my version',disabled=not revision.strip()):
+                from app.tool1.pipeline import rescore
+                try:
+                    with st.spinner('Scoring your version…'):
+                        st.session_state['tool1_rescore']=asdict(rescore(revision,saved.get('kind',kind)))
+                except Exception:
+                    st.error('Re-scoring could not be completed. Check the GW connection and retry.')
+            again=st.session_state.get('tool1_rescore')
+            if again:
+                if again['abstain']:
+                    st.warning('Judge abstained: '+str(again['abstain_reason']))
+                else:
+                    st.write('Your version label: '+str(again['label']).replace('_',' '))
+                    score_chart(again)
             st.download_button('Download your revision',revision,file_name='commsalign-revised-draft.txt',mime='text/plain')
         st.download_button('Download Message Review',json.dumps(saved,indent=2),file_name='commsalign-message-review.json',mime='application/json')
         st.button('Clear message and result',on_click=clear_message)

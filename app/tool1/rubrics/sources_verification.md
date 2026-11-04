@@ -63,7 +63,7 @@ Column references for S1 and S3 refer to their two-column layout. S2 and S6 are 
 | Scope caution, survey design | S2 | same | p.131, §3.1 Analysis; p.132, §3.2 Results; p.136, Discussion, 3rd paragraph | The data come from a cross-sectional survey of 142 U.S. workers recruited on Mechanical Turk, which the authors list as a limitation. | Full text |
 | Left out, empathetic language | S2 | same | p.126, §2.1, 5th paragraph | Empathetic language communicates concern, support, and appreciation for the employee. | Full text |
 
-### Performance feedback rubric (`rubric_performance_feedback.md`, v1.1)
+### Performance feedback rubric (`rubric_performance_feedback.md`, v1.2)
 
 | Rubric element | Source | DOI or URL | Location | Quote (withheld, paraphrase given) | Access |
 |---|---|---|---|---|---|

@@ -25,7 +25,6 @@ Rules:
 - Use exactly these dimension keys in "scores": {keys}.
 - Every dimension has "status", "evidence" (a list of exact quotes), "note", and "score" (an integer 1 to 5, or null when the status is not "scored").
 - "confidence.level" is one of "high", "medium", "low".
-- Also return "revision_placeholders": a list of objects with "after" and "prompt" strings. For missing details identified by the rubric, "after" must be an exact, unique substring of the original draft ending where an inline blank would help. "prompt" must be a short plain-language question, such as "by when?" or "who?", without brackets. Use at most 10. Do not ask for information already supplied, invent details, or append a checklist. Use an empty list when abstaining or no blanks are useful. Scores and evidence must evaluate the original draft only.
 
 RUBRIC
 ======
@@ -133,6 +132,13 @@ def check_and_label(rubric: Rubric, draft: str, raw: dict) -> JudgeResult:
     if extra:
         warnings.append(f"Unexpected dimension keys ignored: {sorted(extra)}.")
 
+    abstain_reason = abstain.get("reason") or (None if in_scope else "not in scope for this rubric")
+    # Rubric v1.2, label rule item 7: fewer than three usable dimensions means the judge abstains.
+    if not abstained and sum(d["status"] in ("scored", "pending") for d in dims.values()) < 3:
+        abstained = True
+        abstain_reason = "fewer than three dimensions apply to this message"
+        warnings.append("Abstained: fewer than three dimensions were scored (rubric v1.2, label rule item 7).")
+
     if abstained:
         label = None
     elif any(d["status"] == "pending" for d in dims.values()):
@@ -147,7 +153,7 @@ def check_and_label(rubric: Rubric, draft: str, raw: dict) -> JudgeResult:
         rubric_id=rubric.rubric_id,
         in_scope=in_scope,
         abstain=abstained,
-        abstain_reason=abstain.get("reason") or (None if in_scope else "not in scope for this rubric"),
+        abstain_reason=abstain_reason,
         dimensions=dims,
         label=label,
         model_label=raw.get("label"),

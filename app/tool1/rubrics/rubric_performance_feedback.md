@@ -1,6 +1,8 @@
 # Rubric draft for performance feedback messages (Tool 1)
 
-Version 1.1, 2026-10-17. Approved by the team on 2026-10-17 (DECISIONS.md E1). v1.0 was approved as final on 2026-10-16 with the content of v0.3.
+Version 1.2, 2026-10-20. Updated from the team's rater calibration meeting (DECISIONS.md F1 row 21). v1.1 was approved on 2026-10-17 and v1.0 on 2026-10-16.
+
+Change from v1.1. Every dimension has a written N/A rule; a missing feature still scores 1. Praise or thanks that names no specific piece of work is now out of scope (the judge abstains). F3 and F4 may be N/A for finished work that needs no change, except in messages that read as a performance review. Decision rules from the meeting were added to F2 to F5. The label rule says how N/A dimensions are handled. Descriptors, anchors, and cutoffs are otherwise unchanged. All additions are team judgment.
 
 Change from v1.0. Added a pending status for dimensions whose only evidence is a writer placeholder such as "[due date?]", a pending label, and a `status` field per dimension in the output (DECISIONS.md F1 row 3a). Dimensions, descriptors, anchors, and cutoffs are unchanged. All additions are team judgment.
 
@@ -24,7 +26,7 @@ Performance feedback rests on a large research body that I could open in full. T
 
 ## Scale
 
-**Team judgment.** No source supplies a scale for scoring messages. Each dimension is scored 1 to 5, with a written descriptor and one illustrative anchor for every level. The descriptors for levels 2 and 4 were added in v0.3. Each anchor differs from the one above it by one feature where possible. The pilot tests whether human raters and the LLM judge agree on each level. The five-level wording is the team's design and is not a research finding.
+**Team judgment.** No source supplies a scale for scoring messages. Each dimension is scored 1 to 5, with a written descriptor and one illustrative anchor for every level. The descriptors for levels 2 and 4 were added in v0.3. Each anchor differs from the one above it by one feature where possible. The pilot tests whether human raters and the LLM judge agree on each level. The five-level wording is the team's design and is not a research finding. Any dimension may be marked N/A (status not_assessable) when its N/A rule says the dimension does not apply to the message. A feature that applies but is missing scores 1, not N/A. The N/A rules and the decision rules added in v1.2 come from the team's rater calibration meeting and are team judgment (DECISIONS.md F1 row 21).
 
 ## Dimensions
 
@@ -44,6 +46,8 @@ Performance feedback rests on a large research body that I could open in full. T
 - **3.** The feedback is mostly about the work but includes some statements about the person (positive or negative).
 - **2.** The feedback is mainly about the person, with one vague reference to the work.
 - **1.** The feedback is about the person ("you're careless", "you're a natural") with little or no reference to the work.
+
+**N/A rule and decision rule (Team judgment, DECISIONS.md F1 row 21).** F1 has no N/A: a message that praises without naming any work is out of scope and the judge abstains. Praise that names what was done ("good job keeping us up to date") is about the task. Praise of the person alone ("you're a natural") is about the person.
 
 **Anchors (Illustrative).**
 - 5. "The exec summary on p1 nails the cost driver. Keep that structure for the Q4 version."
@@ -71,6 +75,8 @@ Performance feedback rests on a large research body that I could open in full. T
 - **2.** The feedback names the piece of work only, with a general verdict ("the deck looks a bit off").
 - **1.** The feedback is general ("needs work", "looks good") and points to nothing in the work.
 
+**N/A rule and decision rule (Team judgment, DECISIONS.md F1 row 21).** F2 has no N/A: praise that names specific work is scored like any feedback. Naming only the piece of work ("the report", "the deck") with a general verdict scores 2. Naming an area ("the numbers") scores 3. Naming the exact part and the issue or strength scores 4 or 5. General traits ("proactive", "communicates well") name no part of the work and score 2 at most.
+
 **Anchors (Illustrative).**
 - 5. "Slide 4 churn # is from Q2 data, swap in Q3 from the dashboard."
 - 4. "The churn # in the deck is from Q2 data, swap in Q3 from the dashboard."
@@ -95,6 +101,8 @@ Performance feedback rests on a large research body that I could open in full. T
 - **2.** The feedback implies a standard ("not quite there") without stating it.
 - **1.** No reference to any goal, standard, or earlier performance.
 
+**N/A rule and decision rule (Team judgment, DECISIONS.md F1 row 21).** N/A when the feedback is on finished work that needs no change and no goal, standard, or earlier result is relevant, for example specific praise on a completed report. When F3 applies, praise or criticism with no goal, standard, target, or earlier result scores 1, however positive or negative it is, and a vague standard ("not quite there") scores 2. When the message itself reads as a performance review (appraisal or annual review wording), F3 is always scored.
+
 **Anchors (Illustrative).**
 - 5. "Target is under 2% pick errors. You were at 3.1% last month and 2.4% this month, so moving the right way."
 - 4. "Target is under 2% pick errors. You were at 2.4% this month."
@@ -118,6 +126,8 @@ Performance feedback rests on a large research body that I could open in full. T
 - **3.** A direction is given without a concrete action ("tighten it up", "be more careful with the numbers").
 - **2.** The feedback points to what must change without saying how.
 - **1.** No next step. The feedback only judges the work.
+
+**N/A rule and decision rule (Team judgment, DECISIONS.md F1 row 21).** N/A when the feedback is on finished work that needs no change. When F4 applies, "keep it up" or "nice work" is not a next step and scores 1, "fix it" or "needs another pass" points to change without how and scores 2, and a direction without an action ("be more careful") scores 3. When the message itself reads as a performance review, F4 is always scored.
 
 **Anchors (Illustrative).**
 - 5. "For the next one, put the assumptions table before the forecast so finance sees the inputs first."
@@ -145,6 +155,8 @@ Performance feedback rests on a large research body that I could open in full. T
 - **2.** Discouraging wording aimed at the person, alongside some task content.
 - **1.** Clearly discouraging or threatening wording, or an unfavorable comparison with coworkers that carries the message.
 
+**N/A rule and decision rule (Team judgment, DECISIONS.md F1 row 21).** Frustration not aimed at the person ("ugh", "again") scores 4 at most. Wording aimed at the person ("not sure you're cut out") scores 2 or lower. N/A only in the rare case where whether the wording is discouraging depends on circumstances the message does not show, so it cannot be judged from the text.
+
 **Anchors (Illustrative).**
 - 5. "Two calc errors in the variance tab, both quick fixes, details below."
 - 4. "Ugh, two calc errors in the variance tab, both quick fixes, details below."
@@ -166,18 +178,19 @@ The reasons are in `not_verified.md`. In brief, feedback frequency may be an art
 
 **Team judgment, untested.** No source supplies cutoffs. The rule is a starting point for the pilot.
 
-1. Score all five dimensions on every in-scope message.
+1. Score all five dimensions on every in-scope message unless an N/A rule applies.
 2. **Good** requires F1 of 4 or more, F5 of 4 or more, F2 of 3 or more, F4 of 3 or more, and a mean of 3.5 or more.
 3. **Needs work** applies when F1 is 2 or less, when F5 is 2 or less, or when both F2 and F4 are 2 or less.
 4. **Borderline** covers every other case. It also applies when the judge's confidence is low, whatever the scores.
 5. F1 and F5 are gated because S3 reports its largest contrasts for self-directed, discouraging, and threatening cues [S3 p.273]. The choice to gate them is still team judgment.
 6. **Pending** applies when any dimension is pending. Once the writer fills in every placeholder, the message is scored again and the normal label rule applies. **Team judgment.**
+7. N/A dimensions are left out of the mean. The F2 and F4 conditions in items 2 and 3 apply only to dimensions that are scored. If F1 or F5 is N/A, the label is Borderline at most. If fewer than three dimensions are scored, the judge abstains. **Team judgment** (DECISIONS.md F1 row 21).
 
 ## Abstention
 
 **Team judgment.** The judge abstains and gives a reason in any of these cases.
 - The message contains no evaluation of any work (for example, logistics only).
-- The message only thanks or praises the person and refers to no work (out of scope).
+- The message thanks or praises without naming any specific piece of work, for example "Great job" or "Thanks for the extra effort" (out of scope; DECISIONS.md F1 row 21).
 - The message has fewer than about 8 words.
 
 ## Judge instructions
@@ -188,6 +201,7 @@ The reasons are in `not_verified.md`. In brief, feedback frequency may be an art
 - Typos, informal tone, emoji, and length do not raise or lower any score.
 - Positive and negative feedback are scored on the same dimensions. Neither tone earns points on its own.
 - Score only what is in the message. Do not assume context the message does not contain.
+- Use N/A (status not_assessable, null score, one-line reason) only when that dimension's N/A rule applies. If the feature applies but is missing, score 1.
 - If a dimension's only evidence is a marked placeholder in square brackets ending in a question mark, such as "[due date?]", quote the placeholder, set the status to pending, and give no score.
 
 ## Judge output format
@@ -196,7 +210,7 @@ The reasons are in `not_verified.md`. In brief, feedback frequency may be an art
 
 ```json
 {
-  "rubric_id": "performance_feedback_v1.1",
+  "rubric_id": "performance_feedback_v1.2",
   "in_scope": true,
   "abstain": {"value": false, "reason": null},
   "scores": {

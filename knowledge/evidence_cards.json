@@ -1,0 +1,675 @@
+{
+ "version": "0.3, decisions made by Claude",
+ "date": "2026-10-19",
+ "note": "Every finding is a paraphrase of a passage already recorded with its locator in docs/rubric/sources_verification.md or docs/rubric/table_with_sources.md. No card adds a claim or a number. Cards from sources cited only in the evidence table were added under DECISIONS.md F1 row 11. Paraphrases count as unverified until a team member checks the page (team_checked).",
+ "sources": {
+  "S1": "Locke & Latham (2002)",
+  "S2": "Hanke, Alikaj, & Patel (2022)",
+  "S3": "Kluger & DeNisi (1996)",
+  "S6": "Moon (2019)",
+  "S7": "Su & Jiang (2023)",
+  "S8": "Li, Liu, & Sun (2026)",
+  "S9": "Colquitt et al. (2001)",
+  "S10": "Kleingeld, van Mierlo, & Arends (2011)",
+  "S11": "Dirkmaat et al. (2023)",
+  "Gilboa2008": "Gilboa, Shirom, Fried, & Cooper (2008)",
+  "Dossett1980": "Dossett, Latham, & Saari (1980)",
+  "Neubert1998": "Neubert (1998)",
+  "Sleiman2020": "Sleiman et al. (2020)",
+  "Alvero2001": "Alvero, Bucklin, & Austin (2001)"
+ },
+ "cards": [
+  {
+   "id": "TI-D1-a",
+   "rubric": "task_instruction",
+   "dimension": "D1_outcome_specificity",
+   "source": "S1",
+   "locator": "p.706, left column, 2nd paragraph",
+   "setting": "Mixed",
+   "finding": "Do-your-best goals have no external referent, so each person defines them differently. A specified goal reduces ambiguity about what is to be attained.",
+   "limits": "Specificity alone does not guarantee high performance, because specific goals vary in difficulty (S1 p.706).",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "TI-D1-b",
+   "rubric": "task_instruction",
+   "dimension": "D1_outcome_specificity",
+   "source": "S2",
+   "locator": "p.126, section 2.1, 4th paragraph",
+   "setting": "Workplace survey",
+   "finding": "Direction-giving language reduces ambiguity by explaining what needs to be done, how, and when, and answers what an employee is supposed to do.",
+   "limits": "Single cross-sectional survey of workers recruited online; measures perceptions of leader language, not written messages.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "S2 is the weakest source (online survey, peer review unconfirmed); approved because its limits are stated on the card."
+   }
+  },
+  {
+   "id": "TI-D1-c",
+   "rubric": "task_instruction",
+   "dimension": "D1_outcome_specificity",
+   "source": "S10",
+   "locator": "p.1294, Table 2; p.1295, Table 3; p.1293",
+   "setting": "Mixed, field subgroup reported",
+   "finding": "Specific group goals outperformed nonspecific goals, and field and lab results did not differ significantly.",
+   "limits": "Studies goals set for groups, not instructions to one person.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "TI-D1-d",
+   "rubric": "task_instruction",
+   "dimension": "D1_outcome_specificity",
+   "source": "Gilboa2008",
+   "locator": "Table 1, pp.240-241; p.243",
+   "setting": "Workplace",
+   "finding": "Role ambiguity, not knowing what is expected at work, is linked to lower job performance, including supervisor-rated and objective performance.",
+   "limits": "Cross-sectional, so it shows association, not cause. The same finding also supports D4, so it should not be counted twice.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "TI-D2-a",
+   "rubric": "task_instruction",
+   "dimension": "D2_time_frame",
+   "source": "S1",
+   "locator": "p.705, right column, 2nd paragraph",
+   "setting": "Mixed",
+   "finding": "A goal is the aim of an action, such as a specific standard, usually to be reached within a specified time limit.",
+   "limits": "S1 links deadline tightness to work pace only (p.707). The rubric rewards a clear time frame, not a tight one.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "TI-D2-b",
+   "rubric": "task_instruction",
+   "dimension": "D2_time_frame",
+   "source": "S11",
+   "locator": "p.7, Table 2",
+   "setting": "Field",
+   "finding": "A letter stating a non-binding target date reduced submissions in the last weeks before the deadline.",
+   "limits": "Measures timing only, not the quality of the work. Farm businesses filing a government form.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Timing, not quality; the limit says so."
+   }
+  },
+  {
+   "id": "TI-D2-c",
+   "rubric": "task_instruction",
+   "dimension": "D2_time_frame",
+   "source": "S2",
+   "locator": "p.126, section 2.1, 4th paragraph; p.127, section 2.2, 4th paragraph",
+   "setting": "Workplace survey",
+   "finding": "What direction-giving messages explain includes when the work is to be done.",
+   "limits": "Perception-level survey evidence. S2's further point that time guidelines reduce uncertainty cites Mayfield & Mayfield (2016), which was not opened, so it was removed from this card.",
+   "team_checked": false,
+   "review_draft02": {
+    "finding": "What direction-giving messages explain includes when. Clarifying goals and time guidelines reduces uncertainty.",
+    "limits": "The uncertainty point is S2 citing Mayfield & Mayfield (2016), which was not opened."
+   },
+   "review": {
+    "decision": "Edit",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Removed the secondary claim from an unopened source (Mayfield & Mayfield, 2016) so the card rests only on what S2 itself says."
+   }
+  },
+  {
+   "id": "TI-D2-d",
+   "rubric": "task_instruction",
+   "dimension": "D2_time_frame",
+   "source": "Dossett1980",
+   "locator": "Table 1, p.564; p.566",
+   "setting": "Workplace field experiment",
+   "finding": "Employees given a specific return date sent back an internal survey sooner than employees asked to return it as soon as possible, and the authors note that as soon as possible was read in very different ways.",
+   "limits": "A longer specific date did not differ from either group. The DOI is not yet confirmed.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "TI-D3-a",
+   "rubric": "task_instruction",
+   "dimension": "D3_rationale",
+   "source": "S9",
+   "locator": "p.436, Table 5, informational justice rows",
+   "setting": "Mixed, lab and field",
+   "finding": "Explanations are linked to trust in the person giving them and to how that person is evaluated.",
+   "limits": "The link to performance is weak and not reliable. No source shows that giving a reason raises task performance (S10 p.1294; S11 p.7).",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "TI-D3-b",
+   "rubric": "task_instruction",
+   "dimension": "D3_rationale",
+   "source": "S2",
+   "locator": "p.126, section 2.1, 6th paragraph",
+   "setting": "Workplace survey",
+   "finding": "Meaning-making language gives the work meaning and answers why the work is important.",
+   "limits": "Perception-level evidence only.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "TI-D4-a",
+   "rubric": "task_instruction",
+   "dimension": "D4_how_to",
+   "source": "S1",
+   "locator": "p.707, right column, numbered item 3",
+   "setting": "Mixed",
+   "finding": "When people are given a goal for a task that is new to them, they plan deliberately to develop strategies.",
+   "limits": "Applies only when the task is new or complex, which is why D4 has an applicability rule.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "TI-D4-b",
+   "rubric": "task_instruction",
+   "dimension": "D4_how_to",
+   "source": "S1",
+   "locator": "p.708, right column, Self-efficacy paragraph",
+   "setting": "Mixed",
+   "finding": "Leaders can raise people's confidence through persuasive communication, which may include information about strategies for reaching the goal.",
+   "limits": "Describes leader communication in general, not written instructions.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "TI-D4-c",
+   "rubric": "task_instruction",
+   "dimension": "D4_how_to",
+   "source": "S1",
+   "locator": "p.714, right column, Conclusion",
+   "setting": "Mixed",
+   "finding": "Failures to get goal-setting effects usually come from errors such as not conveying task knowledge or not giving feedback.",
+   "limits": "Concerns failed studies, not message wording.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Also mentions feedback, which overlaps D5; acceptable because the finding is about task knowledge."
+   }
+  },
+  {
+   "id": "TI-D4-d",
+   "rubric": "task_instruction",
+   "dimension": "D4_how_to",
+   "source": "Gilboa2008",
+   "locator": "p.231; Table 1, pp.240-241; p.244",
+   "setting": "Workplace",
+   "finding": "Situational constraints, which include missing information, tools, and help, are linked to lower performance. Role clarity is defined as knowing what is expected and how to do it.",
+   "limits": "Cross-sectional. Based on few studies for this stressor.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "TI-D4-e",
+   "rubric": "task_instruction",
+   "dimension": "D4_how_to",
+   "source": "Alvero2001",
+   "locator": "Table 3, p.17",
+   "setting": "Workplace",
+   "finding": "In workplace studies, feedback combined with task clarification and job aids gave consistent improvements.",
+   "limits": "A count of consistent results from very few applications, not an effect size. Job aids came with feedback, not alone.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "TI-D5-a",
+   "rubric": "task_instruction",
+   "dimension": "D5_progress_check",
+   "source": "S1",
+   "locator": "p.708, right column, Feedback section, 1st paragraph",
+   "setting": "Mixed",
+   "finding": "For goals to be effective, people need summary feedback showing their progress toward them.",
+   "limits": "Concerns whether progress feedback exists. That an instruction should set it up is team judgment.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "TI-D5-b",
+   "rubric": "task_instruction",
+   "dimension": "D5_progress_check",
+   "source": "Neubert1998",
+   "locator": "Table 1, p.329",
+   "setting": "Mixed, mostly lab and classroom",
+   "finding": "Goal setting combined with feedback on progress improved performance more than goal setting alone.",
+   "limits": "Only one workplace study in the pool. Concerns feedback during the work, not how a message sets it up.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "TI-D5-c",
+   "rubric": "task_instruction",
+   "dimension": "D5_progress_check",
+   "source": "Sleiman2020",
+   "locator": "Table 4",
+   "setting": "Workplace",
+   "finding": "In workplace studies, feedback combined with goal setting improved performance.",
+   "limits": "Very few applications. An older workplace review found feedback with goal setting less consistent than feedback alone (Alvero et al., 2001, Table 3, p.17).",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "PF-F1-a",
+   "rubric": "performance_feedback",
+   "dimension": "F1_task_focus",
+   "source": "S3",
+   "locator": "p.275, Moderator Analyses: Major Conclusions, 1st paragraph; p.278, Implications, 1st paragraph",
+   "setting": "Mixed",
+   "finding": "The more feedback keeps attention on the task and away from the self, the stronger its benefit for performance.",
+   "limits": "Compares groups of studies; no separate workplace result.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "PF-F1-b",
+   "rubric": "performance_feedback",
+   "dimension": "F1_task_focus",
+   "source": "S3",
+   "locator": "p.273, Table 2, Praise row",
+   "setting": "Mixed",
+   "finding": "Effects on performance were weaker when feedback included praise than when it did not.",
+   "limits": "Praise is a broad category in S3. The rubric scores praise that names what was done well as task-focused, and a workplace study links positive supervisor feedback to later performance (PF-F1-c). The rewriter must not remove task-specific praise; it may only turn praise about the person into praise about the work.",
+   "team_checked": false,
+   "review_draft02": {
+    "limits": "Scoring person-level praise as self-focused and task-specific praise as task-focused is team judgment."
+   },
+   "review": {
+    "decision": "Edit",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Reconciled with PF-F1-c (Su & Jiang) so the two cards do not pull the rewriter in opposite directions on praise."
+   }
+  },
+  {
+   "id": "PF-F1-c",
+   "rubric": "performance_feedback",
+   "dimension": "F1_task_focus",
+   "source": "S7",
+   "locator": "p.4, Sample and procedure and Measures; p.5, Table 3",
+   "setting": "Workplace",
+   "finding": "Employees who perceived positive feedback from their supervisor received higher supervisor-rated performance four weeks later.",
+   "limits": "Rates the supervisor's feedback in general, not single messages. Measured differently from S3's praise.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "PF-F2-a",
+   "rubric": "performance_feedback",
+   "dimension": "F2_specificity",
+   "source": "S6",
+   "locator": "p.6, Table 1; p.7, Figure 3",
+   "setting": "Workplace",
+   "finding": "Employees who saw their appraisal feedback as more specific were more likely to accept it, and acceptance was linked to job satisfaction.",
+   "limits": "Cross-sectional and self-reported; about acceptance and satisfaction, not performance.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "PF-F2-b",
+   "rubric": "performance_feedback",
+   "dimension": "F2_specificity",
+   "source": "S6",
+   "locator": "p.7, Discussion, 4th paragraph",
+   "setting": "Workplace",
+   "finding": "Managers should give clear information about deficiencies and how to remedy them.",
+   "limits": "A recommendation drawn from survey results.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "PF-F2-c",
+   "rubric": "performance_feedback",
+   "dimension": "F2_specificity",
+   "source": "S3",
+   "locator": "p.268, left column, 2nd paragraph",
+   "setting": "Mixed",
+   "finding": "The evidence on specificity is not clear, and feedback that is too specific can pull attention below the level needed.",
+   "limits": "This is why the rubric rewards pinpointing the issue briefly and never rewards length.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "PF-F3-a",
+   "rubric": "performance_feedback",
+   "dimension": "F3_progress_vs_standard",
+   "source": "S1",
+   "locator": "p.708, right column, Feedback section, 1st paragraph",
+   "setting": "Mixed",
+   "finding": "People need summary feedback showing progress toward their goals, or they cannot adjust their effort or strategy.",
+   "limits": "Not specific to written feedback.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "PF-F3-b",
+   "rubric": "performance_feedback",
+   "dimension": "F3_progress_vs_standard",
+   "source": "S3",
+   "locator": "p.273, Table 2, Velocity row",
+   "setting": "Mixed",
+   "finding": "Feedback about change from earlier performance had a larger effect on performance than feedback without it.",
+   "limits": "Compares groups of studies.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "PF-F3-c",
+   "rubric": "performance_feedback",
+   "dimension": "F3_progress_vs_standard",
+   "source": "S3",
+   "locator": "p.269, left column, Proposition 4",
+   "setting": "Mixed",
+   "finding": "A stated goal adds most to feedback when the feedback is hard to interpret on its own.",
+   "limits": "A proposition, not a tested result.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "A proposition, not a tested result; approved because the limit says so and it only supports stating a goal."
+   }
+  },
+  {
+   "id": "PF-F3-d",
+   "rubric": "performance_feedback",
+   "dimension": "F3_progress_vs_standard",
+   "source": "Sleiman2020",
+   "locator": "Table 4",
+   "setting": "Workplace",
+   "finding": "In workplace studies, feedback combined with goal setting improved performance.",
+   "limits": "Very few applications.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Same finding as TI-D5-c, used for a different dimension."
+   }
+  },
+  {
+   "id": "PF-F3-e",
+   "rubric": "performance_feedback",
+   "dimension": "F3_progress_vs_standard",
+   "source": "Alvero2001",
+   "locator": "Table 4, p.19",
+   "setting": "Workplace",
+   "finding": "Feedback that compared a person's result with both their own earlier result and a standard gave consistent improvements in most applications.",
+   "limits": "A count of consistent results from very few applications, not an effect size.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "PF-F4-a",
+   "rubric": "performance_feedback",
+   "dimension": "F4_next_step",
+   "source": "S3",
+   "locator": "p.273, Table 2, Correct solution row",
+   "setting": "Mixed",
+   "finding": "Feedback that supplied the correct solution had a larger effect on performance than feedback that did not.",
+   "limits": "Compares groups of studies.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "PF-F4-b",
+   "rubric": "performance_feedback",
+   "dimension": "F4_next_step",
+   "source": "S3",
+   "locator": "p.268, left column, 2nd paragraph",
+   "setting": "Mixed",
+   "finding": "Feedback with corrective information should improve performance, and its key value for learning is pointing to what is wrong.",
+   "limits": "Theoretical argument.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "PF-F4-c",
+   "rubric": "performance_feedback",
+   "dimension": "F4_next_step",
+   "source": "S8",
+   "locator": "p.3, overview of supervisor developmental feedback; p.8, Table 1; p.9",
+   "setting": "Workplace",
+   "finding": "Forward-looking developmental feedback, meant to help employees learn and improve, was linked to higher supervisor-rated creativity.",
+   "limits": "Outcome is creativity, not task performance. One firm, cross-sectional. Definition taken from Zhou (2003), not opened.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "PF-F5-a",
+   "rubric": "performance_feedback",
+   "dimension": "F5_no_self_threat",
+   "source": "S3",
+   "locator": "p.267, right column, Proposition 1",
+   "setting": "Mixed",
+   "finding": "Cues that direct attention to the self, such as discouraging messages and anything felt as a threat to the self, weaken the effect of feedback.",
+   "limits": "S3 also listed comparison with others as such a cue, but in its results that effect was not significant (p.274). The rubric's lower weight on comparisons is team judgment.",
+   "team_checked": false,
+   "review_draft02": {
+    "finding": "Cues that direct attention to the self, such as comparisons with others, discouraging messages, and anything felt as a threat to the self, weaken the effect of feedback.",
+    "limits": "In the results, the comparison-with-others effect was not significant (S3 p.274)."
+   },
+   "review": {
+    "decision": "Edit",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Moved comparisons with others from the finding to the limits, because S3's own results did not support them, so the card does not overstate."
+   }
+  },
+  {
+   "id": "PF-F5-b",
+   "rubric": "performance_feedback",
+   "dimension": "F5_no_self_threat",
+   "source": "S3",
+   "locator": "p.273, Table 2, Discouraging and Threat to self-esteem rows",
+   "setting": "Mixed",
+   "finding": "Feedback designed to discourage had a negative effect on performance, and feedback high in threat to self-esteem had a much smaller effect than feedback low in threat.",
+   "limits": "No workplace source for this dimension.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Fits the rubric, no conflict with another card, source verified, limits stated."
+   }
+  },
+  {
+   "id": "PF-ALL-a",
+   "rubric": "performance_feedback",
+   "dimension": "all",
+   "source": "Sleiman2020",
+   "locator": "p.323",
+   "setting": "Workplace",
+   "finding": "Across workplace studies, performance feedback improved performance.",
+   "limits": "The authors could not code what the feedback said, so this does not show which features matter. Context card, not tied to one dimension.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Context card for why feedback matters; not tied to one dimension."
+   }
+  },
+  {
+   "id": "PF-ALL-b",
+   "rubric": "performance_feedback",
+   "dimension": "all",
+   "source": "S3",
+   "locator": "p.258, left column, 3rd paragraph",
+   "setting": "Mixed",
+   "finding": "Feedback improves performance on average, but a large share of feedback effects are negative, so how feedback is given matters.",
+   "limits": "Mostly lab studies. Context card, not tied to one dimension.",
+   "team_checked": false,
+   "review": {
+    "decision": "Approve",
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+    "note": "Context card; the point that many effects are negative supports careful wording."
+   }
+  }
+ ],
+ "excluded": [
+  {
+   "source": "Crowell et al. (1988)",
+   "dimension": "D1_outcome_specificity",
+   "reason": "Only the abstract was read. Unverified, so not used.",
+   "review": {
+    "agree": true,
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team."
+   }
+  },
+  {
+   "source": "Zyberaj (2026)",
+   "dimension": "F2_specificity",
+   "reason": "The setting of the pooled studies is not confirmed, so it cannot count under DECISIONS.md D1.",
+   "review": {
+    "agree": true,
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team."
+   }
+  },
+  {
+   "source": "Alvero, Bucklin, & Austin (2001), Table 3, p.17",
+   "dimension": "D5_progress_check",
+   "reason": "Conflicts with the D5 cards: feedback with goal setting was less consistent than feedback alone. Kept as a limit on TI-D5-c, not as a card.",
+   "review": {
+    "agree": true,
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team."
+   }
+  },
+  {
+   "source": "Dirkmaat et al. (2023), Table 2, p.7 (checklist)",
+   "dimension": "D4_how_to",
+   "reason": "Conflicts with the D4 cards: a checklist of what to prepare did not change timing. Timing is not task quality. Not a card.",
+   "review": {
+    "agree": true,
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team."
+   }
+  },
+  {
+   "source": "Kleingeld et al. (2011) and Dirkmaat et al. (2023), rationale findings",
+   "dimension": "D3_rationale",
+   "reason": "Evidence against a performance benefit of giving a reason. Kept as the limit on TI-D3-a so the rewriter never claims a reason improves performance.",
+   "review": {
+    "agree": true,
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team."
+   }
+  },
+  {
+   "source": "Locke & Latham (2002), p.707 (tight deadlines)",
+   "dimension": "D2_time_frame",
+   "reason": "Links deadline tightness to work pace only. The rubric rewards a clear time frame, not a tight one. Kept as the limit on TI-D2-a.",
+   "review": {
+    "agree": true,
+    "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team."
+   }
+  }
+ ],
+ "review_summary": {
+  "by": "Claude, at the user's request (2026-10-19). Not reviewed by the team.",
+  "approve": 33,
+  "edit": 3,
+  "drop": 0,
+  "left_out_agreed": 6,
+  "pages_rechecked": false,
+  "note": "Pages were not reopened in this review. Every paraphrase stays unverified until a team member checks the locator (team_checked)."
+ }
+}

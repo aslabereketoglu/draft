@@ -1,6 +1,8 @@
 # Rubric draft for task instruction messages (Tool 1)
 
-Version 1.1, 2026-10-17. Approved by the team on 2026-10-17 (DECISIONS.md E1). v1.0 was approved as final on 2026-10-16 with the content of v0.3.
+Version 1.2, 2026-10-20. Updated from the team's rater calibration meeting (DECISIONS.md F1 row 21). v1.1 was approved on 2026-10-17 and v1.0 on 2026-10-16.
+
+Change from v1.1. Every dimension can now be marked N/A under a written N/A rule; a missing feature still scores 1. Decision rules from the meeting were added to D1, D3, D4, and D5. D4 now applies only when the message signals the task is new to the reader. The label rule says how N/A dimensions are handled. Descriptors, anchors, and cutoffs are otherwise unchanged. All additions are team judgment.
 
 Change from v1.0. Added a pending status for dimensions whose only evidence is a writer placeholder such as "[due date?]", a pending label, and a `status` field per dimension in the output (DECISIONS.md F1 row 3a). Dimensions, descriptors, anchors, and cutoffs are unchanged. All additions are team judgment.
 
@@ -24,7 +26,7 @@ I chose task instructions and performance feedback because both rest on large re
 
 ## Scale
 
-**Team judgment.** No source supplies a scale for scoring messages. Each dimension is scored 1 to 5, with a written descriptor and one illustrative anchor for every level. The descriptors for levels 2 and 4 were added in v0.3. Each anchor differs from the one above it by one feature where possible. The pilot tests whether human raters and the LLM judge agree on each level. The five-level wording is the team's design and is not a research finding. A dimension may be marked not assessable where its applicability rule says so.
+**Team judgment.** No source supplies a scale for scoring messages. Each dimension is scored 1 to 5, with a written descriptor and one illustrative anchor for every level. The descriptors for levels 2 and 4 were added in v0.3. Each anchor differs from the one above it by one feature where possible. The pilot tests whether human raters and the LLM judge agree on each level. The five-level wording is the team's design and is not a research finding. Any dimension may be marked N/A (status not_assessable) when its N/A rule says the dimension does not apply to the message. A feature that applies but is missing scores 1, not N/A. The N/A rules and the decision rules added in v1.2 come from the team's rater calibration meeting and are team judgment (DECISIONS.md F1 row 21).
 
 ## Dimensions
 
@@ -42,6 +44,8 @@ I chose task instructions and performance feedback because both rest on large re
 - **3.** The deliverable is named, but one important feature is vague or missing, so the reader would likely need to ask one question.
 - **2.** The object of the work is named, but not the output wanted.
 - **1.** The request is general ("look into", "do what you can", "make it better") and the reader cannot tell what result is expected.
+
+**N/A rule and decision rule (Team judgment, DECISIONS.md F1 row 21).** N/A only when the message does not itself assign the work, for example when it only changes the deadline of work assigned earlier. A reference to shared knowledge ("same process as usual", "the usual report") names the deliverable without describing it and scores 3. Raters tick context if they know more.
 
 **Anchors (Illustrative).**
 - 5. "pls send me the cleaned vendor list as a CSV, one row per vendor, dupes removed"
@@ -70,6 +74,8 @@ I chose task instructions and performance feedback because both rest on large re
 - **2.** An urgency cue is given with no window ("asap", "soon").
 - **1.** No time frame, or one that cannot be acted on ("whenever", "no rush").
 
+**N/A rule (Team judgment, DECISIONS.md F1 row 21).** N/A only when the instruction has no one-time deadline by its nature, for example a standing rule ("from now on, cc me on vendor emails"). A task with no deadline given scores 1.
+
 **Anchors (Illustrative).**
 - 5. "Need it by Thurs 3pm so it makes the budget deck."
 - 4. "Need it by Thurs so it makes the budget deck."
@@ -91,7 +97,7 @@ I chose task instructions and performance feedback because both rest on large re
 1. D3 scores only the purpose clause, meaning what the work feeds into, who uses it, or what depends on it.
 2. When the same sentence also states a completion condition, that part goes to D1. A stated time goes to D2.
 3. D3 evidence may not repeat D1 evidence. When one sentence carries both, the judge splits it and quotes only the purpose part for D3.
-4. A reason that names no specific use or dependency scores 3 at most ("for the meeting", "leadership wants it"). A reason that only asserts importance ("it's important") scores 2.
+4. A reason that names no specific use or dependency scores 3 at most ("for the meeting", "for the audit thing", "leadership wants it"). A reason that only asserts importance ("it's important") scores 2.
 
 **Boundary (Team judgment).** D3 concerns why the task matters. What counts as done belongs to D1, and how to do it belongs to D4.
 
@@ -102,6 +108,8 @@ I chose task instructions and performance feedback because both rest on large re
 - **2.** Importance is asserted with no use named ("it's important", "pls prioritize").
 - **1.** No reason is given, or the message refuses one ("just do it the way I said").
 
+**N/A rule (Team judgment, DECISIONS.md F1 row 21).** N/A only when the message pauses, cancels, or reschedules work already assigned. A new task with no reason scores 1.
+
 **Anchors (Illustrative).**
 - 5. "This feeds Monday's audit for the finance team."
 - 4. "This feeds Monday's audit."
@@ -111,13 +119,13 @@ I chose task instructions and performance feedback because both rest on large re
 
 **Q12 link.** None asserted. A possible link to Q08 (purpose and importance of the job) is listed in `not_verified.md` as unconfirmed.
 
-### D4. How-to information when the task is new or complex
+### D4. How-to information when the task is new to the reader
 
 **Definition.** When a task is new to the reader or complex, the message gives information about how to approach it, or points to where that information is. [S1 p.707; S1 p.708; S2 p.126]
 
 **Basis.** S1 reports that people given a goal for a task that is new to them engage in deliberate planning to develop strategies [S1 p.707]. S1 notes that leaders can raise subordinates' self-efficacy by persuasive communication, which may include information about strategies for reaching the goal [S1 p.708]. S1 also lists not conveying task knowledge among the errors behind failed goal-setting results [S1 p.714]. S2 lists how as part of what direction-giving messages explain [S2 p.126].
 
-**Applicability rule (Team judgment).** Score D4 when the message or its context signals that the task is new to the reader or complex. Mark it not assessable when the message signals a routine task, or when the judge cannot tell.
+**Applicability rule (Team judgment, DECISIONS.md F1 row 21).** Score D4 only when the message itself signals that the task is new to the reader ("first time", "haven't done this", "new system"). Otherwise mark it N/A, including when the message says the task is routine ("same as usual", "like you have done many times"). Do not score D4 from a guess that the task is hard. Until v1.1 a complex task also triggered D4; the team removed that because complexity cannot be read reliably from the text.
 
 **Boundary (Team judgment).** D4 is about method. The result itself belongs to D1.
 
@@ -126,7 +134,7 @@ I chose task instructions and performance feedback because both rest on large re
 - **4.** The message gives the steps or method, or a specific pointer, but not both.
 - **3.** The message gives a partial hint ("use last year's file") without enough to start.
 - **2.** The message offers vague help with no specific source ("ask around").
-- **1.** The task is signaled as new or complex, and no method or source of help is offered.
+- **1.** The task is signaled as new, and no method or source of help is offered.
 
 **Anchors (Illustrative).**
 - 5. "First time doing a cycle count? Start w/ the A-items list in the shared drive, scan each bin, and flag anything more than 2 units off. Dana can walk you thru the scanner."
@@ -154,6 +162,8 @@ I chose task instructions and performance feedback because both rest on large re
 - **2.** A general invitation to update is given with no time ("keep me posted").
 - **1.** No mention of progress or review.
 
+**N/A rule and decision rule (Team judgment, DECISIONS.md F1 row 21).** N/A only when the task is a single immediate action with no time for a check-in ("send me the file now"). "Drop it on my desk when done" is about completion, not progress, and scores 1. "Keep me posted" with no time scores 2. A loose time ("midweek") scores 3.
+
 **Anchors (Illustrative).**
 - 5. "Send me where you are by noon Wed and we'll check the totals together."
 - 4. "Send me where you are by noon Wed."
@@ -171,12 +181,13 @@ The reasons are in `not_verified.md`. In brief, goal difficulty cannot be judged
 
 **Team judgment, untested.** No source supplies cutoffs. The rule is a starting point for the pilot.
 
-1. Score D1, D2, D3, and D5 on every in-scope message. Score D4 only when it applies.
+1. Score D1, D2, D3, and D5 on every in-scope message unless their N/A rule applies. Score D4 only when it applies.
 2. **Good** requires D1 of 4 or more, D2 of 3 or more, no applicable dimension at 1, and a mean of 3.5 or more across applicable dimensions.
 3. **Needs work** applies when D1 is 2 or less, or when two or more applicable dimensions are 2 or less.
 4. **Borderline** covers every other case. It also applies when the judge's confidence is low, whatever the scores.
 5. D1 and D2 are gated because S1 and S2 most directly support them [S1 p.706; S2 p.126]. The choice to gate them is still team judgment.
 6. **Pending** applies when any dimension is pending. Once the writer fills in every placeholder, the message is scored again and the normal label rule applies. **Team judgment.**
+7. N/A dimensions are left out of the mean and of the counts in items 2 and 3. If D1 or D2 is N/A, the label is Borderline at most. If fewer than three dimensions are scored, the judge abstains. **Team judgment** (DECISIONS.md F1 row 21).
 
 ## Abstention
 
@@ -192,7 +203,7 @@ The reasons are in `not_verified.md`. In brief, goal difficulty cannot be judged
 - Quote evidence as exact substrings of the message, each 15 words or fewer.
 - Typos, informal tone, emoji, and length do not raise or lower any score. This guards against the length and style bias the project must test for.
 - Score only what is in the message. Do not assume context the message does not contain.
-- When a dimension is not assessable, return null with a one-line reason.
+- Use N/A (status not_assessable, null score, one-line reason) only when that dimension's N/A rule applies. If the feature applies but is missing, score 1.
 - If a dimension's only evidence is a marked placeholder in square brackets ending in a question mark, such as "[due date?]", quote the placeholder, set the status to pending, and give no score.
 
 ## Judge output format
@@ -201,7 +212,7 @@ The reasons are in `not_verified.md`. In brief, goal difficulty cannot be judged
 
 ```json
 {
-  "rubric_id": "task_instruction_v1.1",
+  "rubric_id": "task_instruction_v1.2",
   "in_scope": true,
   "abstain": {"value": false, "reason": null},
   "scores": {

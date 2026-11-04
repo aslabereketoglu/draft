@@ -37,14 +37,15 @@ def test_no_request_without_consent_and_clear_missing_settings(monkeypatch):
 
 
 def test_mocked_evaluation_export_and_clear(monkeypatch):
-    import app.tool1.judge as judge_module
+    import app.tool1.pipeline as pipeline_module
     import app.tool1.config as config
     monkeypatch.setattr(config,'load_settings',lambda:None)
     calls=[]
-    def judge(draft,kind):
+    def run(draft,kind):
         calls.append((draft,kind))
-        return JudgeResult(kind,'task_instruction_v1.1',True,False,None,{},'borderline',None,'low','Mock only')
-    monkeypatch.setattr(judge_module,'judge',judge)
+        before=JudgeResult(kind,'task_instruction_v1.2',True,False,None,{},'borderline',None,'low','Mock only')
+        return pipeline_module.PipelineResult(before,None,None)
+    monkeypatch.setattr(pipeline_module,'run',run)
     app=coach()
     app.text_area[0].set_value('Please submit your report by Friday.')
     app.checkbox[0].check()

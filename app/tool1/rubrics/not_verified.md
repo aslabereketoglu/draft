@@ -68,6 +68,7 @@ These have no source and are labeled as such in the drafts. They are untested.
 - The Q12 links for F3 (Q11) and F4 (Q06, Q12), now based on wording overlap with S1 and S8.
 - The judge instructions on ignoring typos, tone, and length.
 - The output format.
+- The N/A rules for every dimension, the decision rules from the rater calibration meeting, the D4 change to "new to the reader" only, generic praise as out of scope, and the N/A handling in the label rules, added in v1.2 (DECISIONS.md F1 row 21).
 - The pending status and pending label for writer placeholders such as "[due date?]", added in v1.1 (DECISIONS.md F1 row 3a).
 - Every anchor message. All are illustrative and written for this draft.
 
